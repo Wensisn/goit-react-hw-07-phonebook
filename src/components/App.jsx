@@ -1,18 +1,19 @@
-import { ContactsVies } from './contactsVIew/ContactsVies';
+import { ContactsList } from './contactsList/ContactsList';
+import { ContactForm } from './ContactForm/ContactForm';
+import { ContactsFilter } from './StatusFilter/ContactsFilter';
 
 export const App = () => {
   return (
     <div
       style={{
-        height: '100vh',
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101',
+        flexDirection: 'column',
       }}
     >
-      <ContactsVies />
+      <ContactForm />
+      <ContactsFilter />
+      <ContactsList />
     </div>
   );
 };
