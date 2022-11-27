@@ -1,36 +1,33 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { ContactsItem } from '../ContactsItem';
-import {
-  selectVisibleTasks,
-  selectIsLoading,
-  selectError,
-} from 'redux/selectors';
 import { GalleryList } from './contacts.styled';
 import { fetchContacts } from '../../redux/contactOperation';
+import { selectVisibleTasks } from '../../redux/selectors';
 import { useEffect } from 'react';
 
 export const ContactsList = () => {
-  const items = useSelector(selectVisibleTasks);
-  const isLoading = useSelector(selectIsLoading);
-  const Error = useSelector(selectError);
+  const dispatch = useDispatch();
 
-  // const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
-  // console.log(contacts);
-  // useEffect(() => {
-  //   dispatch(() => fetchContacts());
-  // }, [dispatch]);
+  const filteredContacts = useSelector(selectVisibleTasks);
 
   return (
-    <GalleryList>
-      {items.map(item => (
-        <ContactsItem
-          id={item.id}
-          key={item.id}
-          name={item.name}
-          number={item.number}
-        />
-      ))}
-    </GalleryList>
+    <>
+      {filteredContacts.length > 0 && (
+        <GalleryList>
+          {filteredContacts.map(item => (
+            <ContactsItem
+              key={item.id}
+              id={item.id}
+              name={item.name}
+              number={item.phone}
+            />
+          ))}
+        </GalleryList>
+      )}
+    </>
   );
 };

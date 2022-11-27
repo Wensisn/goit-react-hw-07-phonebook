@@ -36,7 +36,7 @@ const contactSlice = createSlice({
       state.items.push({
         id: action.payload.id,
         name: action.payload.name,
-        number: action.payload.number,
+        phone: action.payload.phone,
       });
     },
     [deleteContact.fulfilled](state, action) {

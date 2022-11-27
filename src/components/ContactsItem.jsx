@@ -6,7 +6,7 @@ import {
 } from './contactsList/contacts.styled';
 import { deleteContact } from '../redux/contactOperation';
 
-export const ContactsItem = ({ name, number, id }) => {
+export const ContactsItem = ({ id, name, number }) => {
   const dispatch = useDispatch();
 
   return (
@@ -14,7 +14,7 @@ export const ContactsItem = ({ name, number, id }) => {
       <GalleryItem key={id}>
         <GalleryInfo>{name}:</GalleryInfo>
         <GalleryInfo>{number}</GalleryInfo>
-        <GalleryButton onClick={() => dispatch(deleteContact({ id }))}>
+        <GalleryButton onClick={() => dispatch(deleteContact(id))}>
           Delete
         </GalleryButton>
       </GalleryItem>
