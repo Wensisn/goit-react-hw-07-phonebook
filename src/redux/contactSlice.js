@@ -34,7 +34,7 @@ const contactSlice = createSlice({
       state.isLoading = false;
       state.error = null;
       state.items.push({
-        id: action.payload.createdAt,
+        id: action.payload.id,
         name: action.payload.name,
         number: action.payload.number,
       });

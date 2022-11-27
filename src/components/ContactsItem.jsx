@@ -8,6 +8,7 @@ import { deleteContact } from '../redux/contactOperation';
 
 export const ContactsItem = ({ name, number, id }) => {
   const dispatch = useDispatch();
+
   return (
     <>
       <GalleryItem key={id}>

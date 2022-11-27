@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { onChangeFilter } from 'redux/filtersSlice';
 import { nanoid } from 'nanoid';
 import { Boks, Text, Label, Input } from './StatusFilter/filter.styled';
-import { getFilter } from 'redux/selectors';
 
 export const ChangeFilter = () => {
   const dispatch = useDispatch();
