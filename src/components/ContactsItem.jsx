@@ -1,16 +1,21 @@
 import { useDispatch } from 'react-redux';
-import { GalleryItem, GalleryInfo } from './contactsList/contacts.styled';
+import {
+  GalleryItem,
+  GalleryInfo,
+  GalleryButton,
+} from './contactsList/contacts.styled';
 import { deleteContact } from '../redux/contactOperation';
 
-export const ContactsItem = ({ name, number, createdAt, id }) => {
+export const ContactsItem = ({ name, number, id }) => {
   const dispatch = useDispatch();
   return (
     <>
       <GalleryItem key={id}>
-        <GalleryInfo>{name}</GalleryInfo>
+        <GalleryInfo>{name}:</GalleryInfo>
         <GalleryInfo>{number}</GalleryInfo>
-        <GalleryInfo>{createdAt}</GalleryInfo>
-        <button onClick={() => dispatch(deleteContact({ id }))}>delete</button>
+        <GalleryButton onClick={() => dispatch(deleteContact({ id }))}>
+          Delete
+        </GalleryButton>
       </GalleryItem>
     </>
   );

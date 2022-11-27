@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
-import { useDispatch } from 'react-redux';
+import { selectVisibleTasks } from '../redux/selectors';
+import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../redux/contactOperation';
+
 import {
   SectionForm,
   Form,
@@ -15,14 +17,31 @@ import {
 export const LoginForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const items = useSelector(selectVisibleTasks);
 
   const dispatch = useDispatch();
 
   const nameInputId = nanoid();
   const numberInputId = nanoid();
 
+  const isExistName = name => {
+    return items.some(item => item.name === name);
+  };
+
+  const isExistNumber = number => {
+    return items.some(item => item.number === number);
+  };
+
   const handleFormSubmit = event => {
     event.preventDefault();
+    if (isExistName(name)) {
+      alert(`${name} is already in name.`);
+      return;
+    }
+    if (isExistNumber(number)) {
+      alert(`${number} is already in number.`);
+      return;
+    }
     dispatch(addContact({ name, number }));
     resetForm();
   };

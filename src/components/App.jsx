@@ -1,19 +1,14 @@
 import { ContactsList } from './contactsList/ContactsList';
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactsFilter } from './StatusFilter/ContactsFilter';
+import { Bosx } from './app.styled';
 
 export const App = () => {
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        flexDirection: 'column',
-      }}
-    >
+    <Bosx>
       <ContactForm />
       <ContactsFilter />
       <ContactsList />
-    </div>
+    </Bosx>
   );
 };
